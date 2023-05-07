@@ -1,3 +1,3 @@
-# :hamburguer: BURGUER ANTEUX :hamburguer:
+# BURGUER ANTEUX 
 ## Descripción
-Este proyecto consiste en realizar una aplicación web para gestionar los pedidos de un bar-restaurante llamado **_Burguer Anteux_**.
+:hamburguer: Este proyecto consiste en realizar una aplicación web para gestionar los pedidos de un bar-restaurante llamado **_Burguer Anteux_**.
