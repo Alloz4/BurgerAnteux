@@ -1,4 +1,4 @@
-package com.burgueranteux;
+package com.burgeranteux;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

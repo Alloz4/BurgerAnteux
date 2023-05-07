@@ -1,4 +1,4 @@
-package com.burgueranteux.controller;
+package com.burgeranteux.controller;
 
 import org.springframework.stereotype.Controller;
 
