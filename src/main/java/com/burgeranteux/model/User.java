@@ -9,19 +9,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_user;
-    @Column(name = "user", length = 20, nullable = false)
+    @Column(name = "user", nullable = false)
     private String user;
-    @Column(name = "password", length = 20, nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "name", length = 45, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "email", length = 45, nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "phone", length = 11, nullable = false)
+    @Column(name = "phone", nullable = false)
     private String phone;
-    @Column(name = "address", length = 45, nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
-
 
 
     public int getId_user() {
