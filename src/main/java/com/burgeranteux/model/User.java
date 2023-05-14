@@ -22,6 +22,19 @@ public class User {
     @Column(name = "address", nullable = false)
     private String address;
 
+    public User() {
+
+    }
+
+    public User(int id_user, String user, String password, String name, String email, String phone, String address) {
+        this.id_user = id_user;
+        this.user = user;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
 
     public int getId_user() {
         return id_user;

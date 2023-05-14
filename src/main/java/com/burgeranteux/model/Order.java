@@ -28,6 +28,18 @@ public class Order {
     @Column(name = "users_id")
     private int users_id;
 
+    public Order() {
+
+    }
+
+    public Order(int id_order, LocalDateTime date, String address, State state, String comments, int users_id) {
+        this.id_order = id_order;
+        this.date = date;
+        this.address = address;
+        this.state = state;
+        this.comments = comments;
+        this.users_id = users_id;
+    }
 
     public int getId_order() {
         return id_order;

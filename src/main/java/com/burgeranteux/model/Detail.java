@@ -18,6 +18,15 @@ public class Detail {
     @Column(name = "quantity")
     private int quantity;
 
+    public Detail() {
+
+    }
+
+    public Detail(int orders_id, int products_id, int quantity) {
+        this.orders_id = orders_id;
+        this.products_id = products_id;
+        this.quantity = quantity;
+    }
 
     public int getOrders_id() {
         return orders_id;

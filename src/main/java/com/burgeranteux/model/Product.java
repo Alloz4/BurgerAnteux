@@ -20,6 +20,18 @@ public class Product {
     @Column(name = "image")
     private String image;
 
+    public Product() {
+
+    }
+
+    public Product(int id_product, String category, String name, double price, String description, String image) {
+        this.id_product = id_product;
+        this.category = category;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.image = image;
+    }
 
     public int getId_product() {
         return id_product;
