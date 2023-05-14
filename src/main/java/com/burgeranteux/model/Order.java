@@ -16,7 +16,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_order;
+    private long id_order;
     @Column(name = "date")
     private LocalDateTime date;
     @Column(name = "address")
@@ -41,11 +41,11 @@ public class Order {
         this.users_id = users_id;
     }
 
-    public int getId_order() {
+    public long getId_order() {
         return id_order;
     }
 
-    public void setId_order(int id_order) {
+    public void setId_order(long id_order) {
         this.id_order = id_order;
     }
 
