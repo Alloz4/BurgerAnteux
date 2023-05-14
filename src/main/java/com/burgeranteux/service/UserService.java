@@ -3,13 +3,13 @@ package com.burgeranteux.service;
 import com.burgeranteux.model.User;
 import com.burgeranteux.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
+@Service
 public class UserService {
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 //    BCryptPasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository) {
