@@ -16,7 +16,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_order;
+    private long id_order;
     @Column(name = "date")
     private LocalDateTime date;
     @Column(name = "address")
@@ -28,12 +28,24 @@ public class Order {
     @Column(name = "users_id")
     private int users_id;
 
+    public Order() {
 
-    public int getId_order() {
+    }
+
+    public Order(int id_order, LocalDateTime date, String address, State state, String comments, int users_id) {
+        this.id_order = id_order;
+        this.date = date;
+        this.address = address;
+        this.state = state;
+        this.comments = comments;
+        this.users_id = users_id;
+    }
+
+    public long getId_order() {
         return id_order;
     }
 
-    public void setId_order(int id_order) {
+    public void setId_order(long id_order) {
         this.id_order = id_order;
     }
 
