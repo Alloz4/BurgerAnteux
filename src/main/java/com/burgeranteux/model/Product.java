@@ -3,7 +3,7 @@ package com.burgeranteux.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "products")
 public class Product {
 
     @Id

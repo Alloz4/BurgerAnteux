@@ -3,12 +3,12 @@ package com.burgeranteux.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_user;
+    private Long id_user;
     @Column(name = "user", nullable = false)
     private String user;
     @Column(name = "password", nullable = false)
@@ -26,7 +26,7 @@ public class User {
 
     }
 
-    public User(int id_user, String user, String password, String name, String email, String phone, String address) {
+    public User(Long id_user, String user, String password, String name, String email, String phone, String address) {
         this.id_user = id_user;
         this.user = user;
         this.password = password;
@@ -36,11 +36,11 @@ public class User {
         this.address = address;
     }
 
-    public int getId_user() {
+    public long getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(long id_user) {
         this.id_user = id_user;
     }
 
