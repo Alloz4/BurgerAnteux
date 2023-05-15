@@ -11,7 +11,7 @@ enum State {
 }
 
 @Entity
-@Table(name = "ORDERS")
+@Table(name = "orders")
 public class Order {
 
     @Id
