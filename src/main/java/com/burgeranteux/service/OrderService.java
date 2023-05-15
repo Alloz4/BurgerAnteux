@@ -1,7 +1,9 @@
 package com.burgeranteux.service;
 
 import com.burgeranteux.model.Order;
+import com.burgeranteux.model.Product;
 import com.burgeranteux.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +21,11 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public void saveOrder(Order order) {
+    public Order getOrder(long id) {
+        return orderRepository.findById(id).orElse(null);
+    }
+
+    public void addOrder(Order order) {
         orderRepository.save(order);
     }
 

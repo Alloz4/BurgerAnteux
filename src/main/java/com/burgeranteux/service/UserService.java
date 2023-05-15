@@ -2,9 +2,10 @@ package com.burgeranteux.service;
 
 import com.burgeranteux.model.User;
 import com.burgeranteux.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -16,12 +17,15 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
-    public User getUserById(final Integer id) {
+    public User getUserById(final Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -40,7 +44,7 @@ public class UserService {
         return userRepository.save(existingUser);
     }
 
-    public void deleteUser(final Integer id) {
+    public void deleteUser(final Long id) {
         userRepository.deleteById(id);
     }
 
