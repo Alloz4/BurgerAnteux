@@ -2,32 +2,44 @@ package com.burgeranteux.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_user;
+    private long user_id;
+
     @Column(name = "user", nullable = false)
     private String user;
+
     @Column(name = "password", nullable = false)
     private String password;
+
     @Column(name = "name", nullable = false)
     private String name;
+
     @Column(name = "email", nullable = false)
     private String email;
+
     @Column(name = "phone", nullable = false)
     private String phone;
+
     @Column(name = "address", nullable = false)
     private String address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     public User() {
 
     }
 
-    public User(Long id_user, String user, String password, String name, String email, String phone, String address) {
-        this.id_user = id_user;
+    public User(String user, String password, String name, String email, String phone, String address) {
+        super();
         this.user = user;
         this.password = password;
         this.name = name;
@@ -36,12 +48,8 @@ public class User {
         this.address = address;
     }
 
-    public long getId_user() {
-        return id_user;
-    }
-
-    public void setId_user(long id_user) {
-        this.id_user = id_user;
+    public Long getUser_id() {
+        return user_id;
     }
 
     public String getUser() {

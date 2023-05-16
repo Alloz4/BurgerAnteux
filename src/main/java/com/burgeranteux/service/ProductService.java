@@ -19,7 +19,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product getProduct(int id) {
+    public Product getProduct(long id) {
         return productRepository.findById(id).orElse(null);
     }
 
@@ -28,7 +28,7 @@ public class ProductService {
     }
 
     public Product updateProduct(Product product) {
-        Product existingProduct = productRepository.findById(product.getId_product()).orElse(null);
+        Product existingProduct = productRepository.findById(product.getProduct_id()).orElse(null);
         if (existingProduct != null) {
             existingProduct.setCategory(product.getCategory());
             existingProduct.setName(product.getName());
@@ -40,7 +40,7 @@ public class ProductService {
         return productRepository.save(existingProduct);
     }
 
-    public void deleteProduct(int id) {
+    public void deleteProduct(long id) {
         productRepository.deleteById(id);
     }
 }

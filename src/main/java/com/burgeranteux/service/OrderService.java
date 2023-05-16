@@ -30,7 +30,7 @@ public class OrderService {
     }
 
     public void deleteOrder(Order order) {
-        orderRepository.deleteById(order.getId_order());
+        orderRepository.deleteById(order.getOrder_id());
     }
 
 }

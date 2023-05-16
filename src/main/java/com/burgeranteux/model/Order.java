@@ -2,7 +2,9 @@ package com.burgeranteux.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 enum State {
     READY,
@@ -12,49 +14,61 @@ enum State {
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_order;
-    @Column(name = "date")
-    private LocalDateTime date;
-    @Column(name = "address")
-    private String address;
-    @Column(name = "state")
-    private State state;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
+    private Long order_id;
+
     @Column(name = "comments")
     private String comments;
-    @Column(name = "users_id")
-    private int users_id;
 
-    public Order() {
+    @Column(name = "date")
+    private LocalDateTime date;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "state")
+    @Enumerated(EnumType.STRING)
+    private State state;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "FK_user_id")
+    private User user;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "FK_order_id")
+    private List<Detail> details;
+
+    @PrePersist
+    public void setDate() {
+        this.date = LocalDateTime.now();
     }
 
-    public Order(int id_order, LocalDateTime date, String address, State state, String comments, int users_id) {
-        this.id_order = id_order;
-        this.date = date;
-        this.address = address;
-        this.state = state;
+    public Double getTotal() {
+        Double total = 0.00;
+        for (Detail detail : details) {
+            total += detail.getImport();
+        }
+        return total;
+    }
+
+    public long getOrder_id() {
+        return order_id;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
         this.comments = comments;
-        this.users_id = users_id;
-    }
-
-    public long getId_order() {
-        return id_order;
-    }
-
-    public void setId_order(long id_order) {
-        this.id_order = id_order;
     }
 
     public LocalDateTime getDate() {
         return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
     }
 
     public String getAddress() {
@@ -73,19 +87,19 @@ public class Order {
         this.state = state;
     }
 
-    public String getComments() {
-        return comments;
+    public User getUser() {
+        return user;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getUsers_id() {
-        return users_id;
+    public List<Detail> getDetails() {
+        return details;
     }
 
-    public void setUsers_id(int users_id) {
-        this.users_id = users_id;
+    public void setDetails(List<Detail> details) {
+        this.details = details;
     }
 }

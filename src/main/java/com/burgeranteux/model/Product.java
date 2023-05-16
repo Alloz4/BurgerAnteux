@@ -2,21 +2,29 @@ package com.burgeranteux.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_product;
-    @Column(name = "category", nullable = false)
-    private String category;
-    @Column(name = "name", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
+    private Long product_id;
+
+    @Column(name = "name")
     private String name;
-    @Column(name = "price", nullable = false)
-    private double price;
+
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "category")
+    private String category;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "image")
     private String image;
 
@@ -24,8 +32,8 @@ public class Product {
 
     }
 
-    public Product(int id_product, String category, String name, double price, String description, String image) {
-        this.id_product = id_product;
+    public Product(String category, String name, double price, String description, String image) {
+        super();
         this.category = category;
         this.name = name;
         this.price = price;
@@ -33,12 +41,8 @@ public class Product {
         this.image = image;
     }
 
-    public int getId_product() {
-        return id_product;
-    }
-
-    public void setId_product(int id_product) {
-        this.id_product = id_product;
+    public Long getProduct_id() {
+        return product_id;
     }
 
     public String getCategory() {
