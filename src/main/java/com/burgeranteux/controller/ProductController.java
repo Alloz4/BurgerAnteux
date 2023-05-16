@@ -34,4 +34,16 @@ public class ProductController {
         Product newProduct = productService.addProduct(product);
         return new ResponseEntity<>(newProduct, HttpStatus.OK);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
+        Product updateProduct = productService.updateProduct(product);
+        return new ResponseEntity<>(updateProduct, HttpStatus.OK);
+    }
+
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable("id") int id) {
+        productService.deleteProduct(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
