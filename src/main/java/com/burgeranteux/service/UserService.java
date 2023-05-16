@@ -31,7 +31,7 @@ public class UserService {
 
     @Transactional
     public User updateUser(User user) {
-        User existingUser = userRepository.findById(user.getId_user()).orElse(null);
+        User existingUser = userRepository.findById(user.getUser_id()).orElse(null);
         if (existingUser != null) {
             existingUser.setName(user.getName());
             existingUser.setUser(user.getUser());
