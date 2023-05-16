@@ -8,47 +8,39 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "details")
-public class Detail {
-
+public class Detail implements Serializable {
     @Id
-    @Column(name = "orders_id")
-    private int orders_id;
-    @Column(name = "products_id")
-    private int products_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "detail_id")
+    private Long detail_id;
+
     @Column(name = "quantity")
     private int quantity;
+
 
     public Detail() {
 
     }
 
-    public Detail(int orders_id, int products_id, int quantity) {
-        this.orders_id = orders_id;
-        this.products_id = products_id;
+    public Detail(Integer quantity, Product product) {
+        super();
         this.quantity = quantity;
+        this.product = product;
     }
 
-    public int getOrders_id() {
-        return orders_id;
-    }
-
-    public void setOrders_id(int orders_id) {
-        this.orders_id = orders_id;
-    }
-
-    public int getProducts_id() {
-        return products_id;
-    }
-
-    public void setProducts_id(int products_id) {
-        this.products_id = products_id;
-    }
-
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

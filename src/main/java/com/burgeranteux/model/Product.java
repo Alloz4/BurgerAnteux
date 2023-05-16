@@ -24,8 +24,8 @@ public class Product {
 
     }
 
-    public Product(int id_product, String category, String name, double price, String description, String image) {
-        this.id_product = id_product;
+    public Product(String category, String name, double price, String description, String image) {
+        super();
         this.category = category;
         this.name = name;
         this.price = price;
@@ -33,12 +33,8 @@ public class Product {
         this.image = image;
     }
 
-    public int getId_product() {
-        return id_product;
-    }
-
-    public void setId_product(int id_product) {
-        this.id_product = id_product;
+    public Long getProduct_id() {
+        return product_id;
     }
 
     public String getCategory() {
