@@ -2,7 +2,9 @@ package com.burgeranteux.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 enum State {
     READY,
@@ -12,15 +14,22 @@ enum State {
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_order;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
+    private Long order_id;
+
+    @Column(name = "comments")
+    private String comments;
+
     @Column(name = "date")
     private LocalDateTime date;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
     private State state;

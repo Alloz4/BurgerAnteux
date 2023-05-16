@@ -1,9 +1,8 @@
 package com.burgeranteux.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 
 @Entity
@@ -15,7 +14,15 @@ public class Detail implements Serializable {
     private Long detail_id;
 
     @Column(name = "quantity")
-    private int quantity;
+    private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_product_id", referencedColumnName = "product_id")
+    private Product product;
+
+    public Double getImport() {
+        return quantity.doubleValue() * product.getPrice();
+    }
 
 
     public Detail() {

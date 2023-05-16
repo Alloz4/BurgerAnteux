@@ -2,21 +2,29 @@ package com.burgeranteux.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_product;
-    @Column(name = "category", nullable = false)
-    private String category;
-    @Column(name = "name", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
+    private Long product_id;
+
+    @Column(name = "name")
     private String name;
-    @Column(name = "price", nullable = false)
-    private double price;
+
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "category")
+    private String category;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "image")
     private String image;
 

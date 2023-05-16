@@ -11,19 +11,28 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_user;
+    private long user_id;
+
     @Column(name = "user", nullable = false)
     private String user;
+
     @Column(name = "password", nullable = false)
     private String password;
+
     @Column(name = "name", nullable = false)
     private String name;
+
     @Column(name = "email", nullable = false)
     private String email;
+
     @Column(name = "phone", nullable = false)
     private String phone;
+
     @Column(name = "address", nullable = false)
     private String address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     public User() {
 
