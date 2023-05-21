@@ -3,7 +3,6 @@ package com.burgeranteux.controller;
 import com.burgeranteux.model.Product;
 import com.burgeranteux.service.ProductService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +26,11 @@ public class ProductController {
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable("id") int id) {
         return productService.getProduct(id);
+    }
+
+    @GetMapping("/category/{category}")
+    public List<Product> getProductByCategory(@PathVariable("category") String category) {
+        return productService.getProductByCategory(category);
     }
 
     @PostMapping("/add")
