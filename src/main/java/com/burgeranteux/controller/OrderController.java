@@ -4,27 +4,30 @@ import com.burgeranteux.model.Order;
 import com.burgeranteux.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/orders")
 public class OrderController {
-    @Autowired
-    private OrderService orderService;
+    private final OrderService orderService;
 
-    @GetMapping("/orders")
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @GetMapping("/all")
     public List<Order> getOrder() {
         return orderService.getAllOrders();
     }
 
-    @GetMapping("/orders/{id}")
-    public Order getOrderById(long id) {
+    @GetMapping("/{id}")
+    public Order getOrderById(@PathVariable("id") long id) {
         return orderService.getOrder(id);
     }
-
 
 
 }
