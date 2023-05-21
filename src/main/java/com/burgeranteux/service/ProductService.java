@@ -2,7 +2,6 @@ package com.burgeranteux.service;
 
 import com.burgeranteux.model.Product;
 import com.burgeranteux.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
