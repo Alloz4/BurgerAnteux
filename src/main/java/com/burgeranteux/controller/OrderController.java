@@ -2,10 +2,7 @@ package com.burgeranteux.controller;
 
 import com.burgeranteux.model.Order;
 import com.burgeranteux.service.OrderService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,9 @@ public class OrderController {
         return orderService.getOrder(id);
     }
 
+    @PostMapping("/add")
+    public Order addOrder(@RequestBody Order order) {
+        return orderService.addOrder(order);
+    }
 
 }

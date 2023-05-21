@@ -25,8 +25,8 @@ public class OrderService {
         return orderRepository.findById(id).orElse(null);
     }
 
-    public void addOrder(Order order) {
-        orderRepository.save(order);
+    public Order addOrder(Order order) {
+        return orderRepository.save(order);
     }
 
     public void deleteOrder(Order order) {
