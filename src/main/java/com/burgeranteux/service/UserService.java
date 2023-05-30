@@ -34,7 +34,7 @@ public class UserService {
         User existingUser = userRepository.findById(user.getUser_id()).orElse(null);
         if (existingUser != null) {
             existingUser.setName(user.getName());
-            existingUser.setUser(user.getUser());
+            existingUser.setLastname(user.getLastname());
             existingUser.setEmail(user.getEmail());
             existingUser.setPassword(user.getPassword());
             existingUser.setAddress(user.getAddress());
@@ -48,7 +48,9 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User getUserByUsername(final String username) {
-        return userRepository.findByUser(username);
+    public boolean login(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        return user != null && user.getPassword().equals(password);
     }
+
 }
