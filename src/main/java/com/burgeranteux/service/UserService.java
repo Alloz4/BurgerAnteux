@@ -29,6 +29,10 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+    public User getUserByEmail(final String email) {
+        return userRepository.findByEmail(email);
+    }
+
     @Transactional
     public User updateUser(User user) {
         User existingUser = userRepository.findById(user.getUser_id()).orElse(null);

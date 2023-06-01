@@ -25,10 +25,16 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable("id") Long id) {
-        return userService.getUserById(id);
+//    @GetMapping("/{id}")
+//    public User getUserById(@PathVariable("id") Long id) {
+//        return userService.getUserById(id);
+//    }
+
+    @GetMapping("/{email}")
+    public User getUserByEmail(@PathVariable("email") String email) {
+        return userService.getUserByEmail(email);
     }
+
 
     @PostMapping("/add")
     public User addUser(@RequestBody User user) {
