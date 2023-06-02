@@ -34,8 +34,8 @@ public class Order implements Serializable {
     @Enumerated(EnumType.STRING)
     private State state;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FK_user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
