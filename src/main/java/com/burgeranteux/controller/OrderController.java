@@ -31,4 +31,9 @@ public class OrderController {
         return orderService.addOrder(order);
     }
 
+    @GetMapping("/user/{user_id}")
+    public List<Order> getOrderByUser(@PathVariable("user_id") long user_id) {
+        return orderService.getOrderByUser(user_id);
+    }
+
 }

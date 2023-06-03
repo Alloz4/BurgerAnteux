@@ -33,4 +33,8 @@ public class OrderService {
         orderRepository.deleteById(order.getOrder_id());
     }
 
+    public List<Order> getOrderByUser(long user_id) {
+        return orderRepository.findByUserId(user_id);
+    }
+
 }
