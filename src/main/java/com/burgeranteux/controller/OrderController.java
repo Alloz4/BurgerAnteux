@@ -1,7 +1,13 @@
 package com.burgeranteux.controller;
 
+import com.burgeranteux.model.Detail;
 import com.burgeranteux.model.Order;
+import com.burgeranteux.model.Product;
+import com.burgeranteux.service.DetailService;
 import com.burgeranteux.service.OrderService;
+import com.burgeranteux.service.ProductService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +17,13 @@ import java.util.List;
 @CrossOrigin("*")
 public class OrderController {
     private final OrderService orderService;
+    private final DetailService detailService;
+    private final ProductService productService;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderService orderService, DetailService detailService, ProductService productService) {
         this.orderService = orderService;
+        this.detailService = detailService;
+        this.productService = productService;
     }
 
     @GetMapping("/all")
@@ -36,4 +46,20 @@ public class OrderController {
         return orderService.getOrderByUser(user_id);
     }
 
+    @GetMapping
+    public List<Order> obtenerPedidosConDetalles() {
+        List<Order> pedidos = orderService.getPedidosConDetalles();
+
+        for (Order pedido : pedidos) {
+            for (Detail detalle : pedido.getDetails()) {
+                Long productoId = detalle.getProduct().getProduct_id();
+                Product producto = productService.getProduct(productoId);
+                if (producto != null) {
+                    detalle.getProduct().setName(producto.getName());
+                }
+            }
+        }
+
+        return pedidos;
+    }
 }

@@ -13,4 +13,6 @@ public interface DetailRepository extends JpaRepository<Detail, Long> {
     @Query("SELECT d FROM Detail d WHERE d.order.order_id = :orderId")
     List<Detail> findByOrderId(Long orderId);
 
+    @Query("SELECT d FROM Detail d JOIN FETCH d.order JOIN FETCH d.product")
+    List<Detail> getDetallesConPedidoYProducto();
 }

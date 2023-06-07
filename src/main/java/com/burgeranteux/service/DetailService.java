@@ -22,4 +22,12 @@ public class DetailService {
     public List<Detail> getDetailsByOrderId(Long orderId) {
         return detailRepository.findByOrderId(orderId);
     }
+
+    public List<Detail> getDetallesConPedidoYProducto() {
+        return detailRepository.getDetallesConPedidoYProducto();
+    }
+
+    public Detail findById(Long id) {
+        return detailRepository.findById(id).orElse(null);
+    }
 }

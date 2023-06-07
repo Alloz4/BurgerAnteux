@@ -35,4 +35,8 @@ public class OrderService {
         return orderRepository.findByUserId(user_id);
     }
 
+    public List<Order> getPedidosConDetalles() {
+        return orderRepository.getPedidosConDetalles();
+    }
+
 }
