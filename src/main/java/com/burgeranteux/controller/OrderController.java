@@ -46,20 +46,9 @@ public class OrderController {
         return orderService.getOrderByUser(user_id);
     }
 
-    @GetMapping
-    public List<Order> obtenerPedidosConDetalles() {
-        List<Order> pedidos = orderService.getPedidosConDetalles();
-
-        for (Order pedido : pedidos) {
-            for (Detail detalle : pedido.getDetails()) {
-                Long productoId = detalle.getProduct().getProduct_id();
-                Product producto = productService.getProduct(productoId);
-                if (producto != null) {
-                    detalle.getProduct().setName(producto.getName());
-                }
-            }
-        }
-
-        return pedidos;
+    @PutMapping("/update")
+    public Order updateOrder(@RequestBody Order order) {
+        return orderService.updateOrder(order);
     }
+
 }

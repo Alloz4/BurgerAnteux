@@ -19,15 +19,8 @@ public class DetailService {
         return detailRepository.save(detail);
     }
 
-    public List<Detail> getDetailsByOrderId(Long orderId) {
-        return detailRepository.findByOrderId(orderId);
+    public List<Object[]> getDetailsByOrderId(long id) {
+        return detailRepository.getDetailsByOrderId(id);
     }
 
-    public List<Detail> getDetallesConPedidoYProducto() {
-        return detailRepository.getDetallesConPedidoYProducto();
-    }
-
-    public Detail findById(Long id) {
-        return detailRepository.findById(id).orElse(null);
-    }
 }

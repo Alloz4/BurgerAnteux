@@ -18,7 +18,7 @@ public class DetailController {
     }
 
     @GetMapping("/{id}")
-    public List<Detail> getDetailsByOrderId(@PathVariable("id") long id) {
+    public List<Object[]> getDetailsByOrderId(@PathVariable("id") long id) {
         return detailService.getDetailsByOrderId(id);
     }
 

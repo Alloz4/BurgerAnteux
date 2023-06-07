@@ -1,8 +1,10 @@
 package com.burgeranteux.service;
 
 import com.burgeranteux.model.Order;
+import com.burgeranteux.model.User;
 import com.burgeranteux.repository.OrderRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -35,8 +37,15 @@ public class OrderService {
         return orderRepository.findByUserId(user_id);
     }
 
-    public List<Order> getPedidosConDetalles() {
-        return orderRepository.getPedidosConDetalles();
+
+    @Transactional
+    public Order updateOrder(Order order) {
+        Order existingOrder = orderRepository.findById(order.getOrder_id()).orElse(null);
+        if (existingOrder != null) {
+            existingOrder.setState(order.getState());
+        }
+        assert existingOrder != null;
+        return orderRepository.save(existingOrder);
     }
 
 }
