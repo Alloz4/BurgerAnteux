@@ -20,6 +20,10 @@ public class Detail implements Serializable {
     @JoinColumn(name = "FK_product_id", referencedColumnName = "product_id")
     private Product product;
 
+    @ManyToOne
+    @JoinColumn(name = "FK_order_id", referencedColumnName = "order_id")
+    private Order order;
+
     public Double getImport() {
         return quantity.doubleValue() * product.getPrice();
     }
