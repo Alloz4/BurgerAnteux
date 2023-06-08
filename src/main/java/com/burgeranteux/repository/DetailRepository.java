@@ -17,4 +17,13 @@ public interface DetailRepository extends JpaRepository<Detail, Long> {
             "JOIN d.order o " +
             "WHERE o.order_id = :orderId")
     List<Object[]> getDetailsByOrderId(@Param("orderId") Long orderId);
+
+    @Query("SELECT d.quantity, p.name, o.order_id " +
+            "FROM Detail d " +
+            "JOIN d.product p " +
+            "JOIN d.order o " +
+            "JOIN o.user u " +
+            "WHERE o.order_id = :orderId " +
+            "AND u.user_id = :userId")
+    List<Object[]> getDetailsByUserId(@Param("orderId") Long orderId, @Param("userId") Long userId);
 }

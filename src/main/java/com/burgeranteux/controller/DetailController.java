@@ -26,4 +26,9 @@ public class DetailController {
     public Detail addDetail(@RequestBody Detail detail) {
         return detailService.addDetail(detail);
     }
+
+    @GetMapping("/{orderId}/{userId}")
+    public List<Object[]> getDetailsByUserId(@PathVariable("orderId") long orderId, @PathVariable("userId") long userId) {
+        return detailService.getDetailsByUserId(orderId, userId);
+    }
 }

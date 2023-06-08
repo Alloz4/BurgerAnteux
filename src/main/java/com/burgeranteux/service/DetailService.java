@@ -23,4 +23,8 @@ public class DetailService {
         return detailRepository.getDetailsByOrderId(id);
     }
 
+    public List<Object[]> getDetailsByUserId(long orderId, long userId) {
+        return detailRepository.getDetailsByUserId(orderId, userId);
+    }
+
 }
