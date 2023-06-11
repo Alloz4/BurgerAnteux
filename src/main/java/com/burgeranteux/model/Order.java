@@ -47,14 +47,6 @@ public class Order implements Serializable {
         this.date = LocalDateTime.now();
     }
 
-    public Double getTotal() {
-        Double total = 0.00;
-        for (Detail detail : details) {
-            total += detail.getImport();
-        }
-        return total;
-    }
-
     public long getOrder_id() {
         return order_id;
     }
