@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/products")
@@ -45,7 +46,7 @@ public class ProductController {
         return new ResponseEntity<>(updateProduct, HttpStatus.OK);
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable("id") int id) {
         productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.OK);
