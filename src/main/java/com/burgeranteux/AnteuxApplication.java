@@ -1,4 +1,4 @@
-package com.burgueranteux;
+package com.burgeranteux;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
