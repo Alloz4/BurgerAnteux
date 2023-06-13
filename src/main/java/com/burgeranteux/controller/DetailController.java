@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/details")
-@CrossOrigin("*")
+@CrossOrigin
 public class DetailController {
 
     private final DetailService detailService;

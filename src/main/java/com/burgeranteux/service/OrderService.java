@@ -1,7 +1,6 @@
 package com.burgeranteux.service;
 
 import com.burgeranteux.model.Order;
-import com.burgeranteux.model.User;
 import com.burgeranteux.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
