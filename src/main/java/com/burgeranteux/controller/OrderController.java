@@ -1,29 +1,19 @@
 package com.burgeranteux.controller;
 
-import com.burgeranteux.model.Detail;
 import com.burgeranteux.model.Order;
-import com.burgeranteux.model.Product;
-import com.burgeranteux.service.DetailService;
 import com.burgeranteux.service.OrderService;
-import com.burgeranteux.service.ProductService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
-@CrossOrigin("*")
+@CrossOrigin
 public class OrderController {
     private final OrderService orderService;
-    private final DetailService detailService;
-    private final ProductService productService;
 
-    public OrderController(OrderService orderService, DetailService detailService, ProductService productService) {
+    public OrderController(OrderService orderService) {
         this.orderService = orderService;
-        this.detailService = detailService;
-        this.productService = productService;
     }
 
     @GetMapping("/all")
